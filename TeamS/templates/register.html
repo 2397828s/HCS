@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+  <head>
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+  </head>
+
+{% block content %}
+{% load static %}
+
+  <body class="text-center">
+
+    <main class="form-signin">
+
+      </p>
+      {% if registered %}
+        <h1 class="h3 mb-3 fw-normal">Thank you for registering</h1>
+        <br/>
+        <br/>
+        <a href="/login/" class="btn btn-lg btn-primary btn-block">Log in now</a>
+      {% else %}
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+        <form id="user_form" method="post" action="{% url 'register' %}">
+          {% csrf_token %}
+          <div class="visually-hidden">
+            {{ form.username.errors }}
+            <label for="id_username">Username:</label>
+            <input name="username" type="text" id="id_username" class="form-control" placeholder="Username" value="" required>
+            {{ form.username }}
+            <p class="text-left">
+              Please DO NOT use your personal information e.g. email, phone, name, etc.<br/>
+            </p>
+          </div>
+          <div class="visually-hidden">
+            {{ form.password.errors }}
+            <label for="id_password">Password:</label>
+            <input name="password" type="password" id="id_password" class="form-control" placeholder="Password" required>
+            {{ form.password }}
+            <p class="text-left">
+              <a id="password-length">Password must contain at least 8 characters<br/></a>
+            <a id="password-strength">
+              <br/>
+            </a>
+            </p>
+          </div>
+          <div class="visually-hidden">
+            {{ form.last_name.errors }}
+            <label for="id_last_name">Confirm password:</label>
+            <input name="last_name" type="password" id="id_last_name" class="form-control" placeholder="Re-enter password" required>
+            {{ form.last_name }}
+            <p class="text-left">
+              <a id="password-match">
+                <br/>
+              </a>
+            </p>
+          </div>
+            <p class="mt-5 mb-3 text-muted"> </p>
+          <input type="submit" name="submit" value="Submit" id="submit" class="btn btn-lg btn-primary btn-block" disabled/>
+        </form>
+      {% endif %}
+    </main>
+
+  </body>
+
+<script type="text/javascript" src="{% static "js/zxcvbn.js" %}"></script>
+<script type="text/javascript" src="{% static "js/register.js" %}"></script>
+
+
+{% endblock %}
+
+

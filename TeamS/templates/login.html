@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+  <head>
+
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+  </head>
+
+{% block content %}
+
+<body class="text-center">
+
+<main class="form-signin">
+  {% if failed %}
+    <h1 class="h3 mb-3 fw-normal">Incorrect login details, please try again</h1>
+  {% else %}
+    <h1 class="h3 mb-3 fw-normal">Log in</h1>
+  {% endif %}
+    <form id="login_form" method="post" action="{% url 'login' %}">
+  <!--    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">-->
+      {% csrf_token %}
+      <div class="visually-hidden">
+        <label for="id_username">Username:</label>
+        <input name="username" type="text" id="id_username" class="form-control" placeholder="Username" value="" required>
+      </div>
+      <div class="visually-hidden">
+        <label for="id_password">Password:</label>
+        <input name="password" type="password" id="id_password" class="form-control" placeholder="Password" required>
+      </div>
+        <p class="mt-5 mb-3 text-muted"> </p>
+      <input type="submit" name="submit" value="Submit" class="btn btn-lg btn-primary btn-block"/>
+    </form>
+
+</main>
+</body>
+{% endblock %}
