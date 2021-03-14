@@ -32,7 +32,7 @@
             <p class="text-left">
               Please DO NOT use your personal information e.g. email, phone, name, etc.<br/>
               {% if error %}
-                Error: {{ error }}
+              <u><b>Error: {{ error }}</b></u>
               {% endif %}
               <br/>
             </p>
@@ -44,9 +44,7 @@
             {{ form.password }}
             <p class="text-left">
               <a id="password-length">Password must contain at least 8 characters<br/></a>
-            <a id="password-strength">
-              <br/>
-            </a>
+              <a id="password-strength"><br/></a>
             </p>
           </div>
           <div class="visually-hidden">
@@ -55,9 +53,7 @@
             <input name="last_name" type="password" id="id_last_name" class="form-control" placeholder="Re-enter password" required>
             {{ form.last_name }}
             <p class="text-left">
-              <a id="password-match">
-                <br/>
-              </a>
+                <a id="password-match"><br/></a>
             </p>
           </div>
             <p class="mt-5 mb-3 text-muted"> </p>

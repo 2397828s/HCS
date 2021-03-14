@@ -25,7 +25,7 @@ function updateStrength() {
     var result = zxcvbn(val);
     var text = document.getElementById('password-strength');
     if(val !== "") {
-        text.innerHTML = "Your password strength: <u>" + strength[result.score] + "</u>";
+        text.innerHTML = "Your password strength: <u><b>" + strength[result.score] + "</b></u>";
     }
     else {
         text.innerHTML = "<br/>";
@@ -37,7 +37,7 @@ function updateTime() {
     var result = zxcvbn(val);
     var text = document.getElementById('password-strength');
     if (val !== "") {
-        text.innerHTML = "Your password can be cracked by a modern PC in <u>" + result.crack_times_display["offline_slow_hashing_1e4_per_second"] + "</u>";
+        text.innerHTML = "Your password can be cracked by a modern PC in <u><b>" + result.crack_times_display["offline_slow_hashing_1e4_per_second"] + "</b></u>";
     }
     else {
         text.innerHTML = "<br/>";
@@ -58,7 +58,7 @@ function validate() {
             document.getElementById('submit').disabled = false;
         }
         else {
-            text.innerHTML = "Incorrect<br/>";
+            text.innerHTML = "<u><b>Incorrect<br/><u><b>";
         }
     }
     else {
