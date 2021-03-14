@@ -19,10 +19,11 @@ def index(request):
 
 def register(request):
     registered = False
-
+    error = False
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         # user_pass_form = UserPassForm(request.POST)
+
         if user_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
@@ -32,12 +33,12 @@ def register(request):
             # user_pass.save()
             registered = True
         else:
-            print(user_form.errors)
+            error = list(user_form.errors.values())[0][0][:-1]
     else:
         user_form = UserForm()
         # user_pass_form = UserPassForm()
 
-    return render(request, 'register.html', context={'user_form': user_form, 'registered': registered})
+    return render(request, 'register.html', context={'user_form': user_form, 'registered': registered, 'error': error})
 
 
 def user_login(request):

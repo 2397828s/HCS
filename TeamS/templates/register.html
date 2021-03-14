@@ -19,7 +19,9 @@
         <br/>
         <a href="/login/" class="btn btn-lg btn-primary">Log in now</a>
       {% else %}
+
         <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
         <form id="user_form" method="post" action="{% url 'register' %}">
           {% csrf_token %}
           <div class="visually-hidden">
@@ -29,6 +31,10 @@
             {{ form.username }}
             <p class="text-left">
               Please DO NOT use your personal information e.g. email, phone, name, etc.<br/>
+              {% if error %}
+                Error: {{ error }}
+              {% endif %}
+              <br/>
             </p>
           </div>
           <div class="visually-hidden">
