@@ -54,11 +54,11 @@ function validate() {
     if (val !== "") {
 
         if (val === password.value) {
-            text.innerHTML = "Correct<br/>";
+            text.innerHTML = "<u><b>Correct<u><b>";
             document.getElementById('submit').disabled = false;
         }
         else {
-            text.innerHTML = "<u><b>Incorrect<br/><u><b>";
+            text.innerHTML = "<u><b>Incorrect<u><b>";
         }
     }
     else {

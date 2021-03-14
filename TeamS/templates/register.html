@@ -26,35 +26,41 @@
           {% csrf_token %}
           <div class="visually-hidden">
             {{ form.username.errors }}
-            <label for="id_username">Username:</label>
+            <label for="id_username"><b>Username:</b></label>
+            <p class="text-left">
+              {% if error %}
+              <u><b>Error: {{ error }}</b></u>
+              {% else %}
+              <br/>
+              {% endif %}
+            </p>
             <input name="username" type="text" id="id_username" class="form-control" placeholder="Username" value="" required>
             {{ form.username }}
             <p class="text-left">
               Please DO NOT use your personal information e.g. email, phone, name, etc.<br/>
-              {% if error %}
-              <u><b>Error: {{ error }}</b></u>
-              {% endif %}
-              <br/>
             </p>
           </div>
           <div class="visually-hidden">
             {{ form.password.errors }}
-            <label for="id_password">Password:</label>
+            <label for="id_password"><b>Password:</b></label>
+            <p class="text-left">
+                <a id="password-strength"><br/></a>
+            </p>
             <input name="password" type="password" id="id_password" class="form-control" placeholder="Password" required>
             {{ form.password }}
             <p class="text-left">
               <a id="password-length">Password must contain at least 8 characters<br/></a>
-              <a id="password-strength"><br/></a>
             </p>
           </div>
           <div class="visually-hidden">
             {{ form.last_name.errors }}
-            <label for="id_last_name">Confirm password:</label>
-            <input name="last_name" type="password" id="id_last_name" class="form-control" placeholder="Re-enter password" required>
-            {{ form.last_name }}
+            <label for="id_last_name"><b>Confirm password:</b></label>
             <p class="text-left">
                 <a id="password-match"><br/></a>
             </p>
+            <input name="last_name" type="password" id="id_last_name" class="form-control" placeholder="Re-enter password" required>
+            {{ form.last_name }}
+
           </div>
             <p class="mt-5 mb-3 text-muted"> </p>
           <input type="submit" name="submit" value="Submit" id="submit" class="btn btn-lg btn-primary" disabled/>
