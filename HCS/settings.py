@@ -23,7 +23,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'TeamS/templates')
 SECRET_KEY = 'k-c2lup79f_sa2o2!dr8y(kgfamzfy_a6w9=ox!3ah)q@djxkq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 

@@ -48,9 +48,9 @@
 
 	{% if survey %}
 		<p>Please take the anonymous survey to complete the experiment.</p>
-		<form action={{ survey }} class="text-center" title="{{ survey }}">
-			<input type="submit" value="Survey" class="btn btn-lg btn-primary"/>
-		</form>
+		<p>
+			<a href={{ survey }}>Link to survey</a>
+		</p>
 	{% endif %}
 
 {% else %}

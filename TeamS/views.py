@@ -60,6 +60,7 @@ def user_login(request):
     else:
         return render(request, 'login.html', context={'failed': failed})
 
+
 def debrief(request):
     return render(request, 'debrief.html')
 
