@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+<head>
+	    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+</head>
+
+{% block content %}
+
+<h3>Thank you for completing the experiment!</h3>
+<br/>
+{% if user.is_authenticated %}
+
+	<p>
+		The aim of the experiment is to understand how different password strength messages affect user password strength.<br/>
+		There are two types of message used in the experiment:<br/>
+		A qualitative message: Your password strength: weak/medium/strong/...<br/>
+		A quantitative message: Your password can be cracked by a modern PC in less than a second/12 minutes/3 years/...<br/>
+		The type of message displayed to a user is based on the username.<br/>
+		<br/>
+		You are welcome to contact us if you have any question.<br/>
+		<br/>
+		You can log out your account now.
+	</p>
+
+
+{% else %}
+
+	<p>Please log in to view the debriefing.</p>
+
+
+{% endif %}
+
+{% endblock %}
