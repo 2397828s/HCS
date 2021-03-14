@@ -1,19 +1,65 @@
 {% extends 'base.html' %}
 
+<head>
+	    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+</head>
+
 {% block content %}
 
-<h1>This is the home page</h1>
+<h1>Welcome to SecPage</h1>
+<h5>A secure social platform for connecting with people</h5>
+
+<div>
+	<br/>
+	<h3>This is an experiment</h3>
+	<p>The aim of this experiment is to study how user password strength can be improved during account registration.</p>
+	<p>
+		Assume this a social media website where you connect with your family, friends, and colleagues, and follow the instructions.<br/>
+		Please read the instructions carefully before you start.
+	</p>
+	<ol>
+		<li>
+			<p>
+			To start the experiment, click <b>Register</b> to register an account. Enter username and password of your choice.<br/>
+			For the safety of your information, <b>DO NOT</b> use your personal information as the username (e.g. name, email, phone number, etc.)<br/>
+			A message indicating password strength will appear as you enter the password.
+			</p>
+		</li>
+		<li>
+			<p>After successfully registering an account, <b>log in</b> to your account.</p>
+		</li>
+		<li>
+			<p>
+				After successful login, a link to a <b>survey</b> will appear. Complete the survey to finish the experiment.<br/>
+			Note: the experiment is not completed until you submit the survey.
+			</p>
+		</li>
+	</ol>
+
+	<p>
+		You can withdraw from the experiment at any time. However, if you do so,
+		you will automatically waive the right to be debriefed about the purpose of the experiment.
+	</p>
+
+</div>
+
 
 {% if user.is_authenticated %}
 
-	<p>Username: {{ user.username}}</p>
-	<p>Please take this survey</p>
+	{% if survey %}
+		<p>Please take the anonymous survey to complete the experiment.</p>
+		<form action={{ survey }} class="text-center" title="{{ survey }}">
+			<input type="submit" value="Survey" class="btn btn-lg btn-primary"/>
+		</form>
+	{% endif %}
 
 {% else %}
-	<p>This is a security experiment</p>
 
+	<p>By registering, you agree that you are over 18 and have understood the about information.</p>
+	<form action="register/" class="text-center" title="register">
+		<input type="submit" value="Register" class="btn btn-lg btn-primary"/>
+	</form>
 
 {% endif %}
-
 
 {% endblock %}

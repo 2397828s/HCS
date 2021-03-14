@@ -12,7 +12,7 @@ var passtext = document.getElementById('id_last_name');
 
 function update() {
     var username = document.getElementById('id_username');
-    if ((username.value.length) % 2 == 0) {
+    if ((username.value.length) % 2 === 0) {
         updateStrength()
     }
     else {
@@ -25,7 +25,7 @@ function updateStrength() {
     var result = zxcvbn(val);
     var text = document.getElementById('password-strength');
     if(val !== "") {
-        text.innerHTML = "Password strength: <u>" + strength[result.score] + "</u>";
+        text.innerHTML = "Your password strength: <u>" + strength[result.score] + "</u>";
     }
     else {
         text.innerHTML = "<br/>";
@@ -37,7 +37,7 @@ function updateTime() {
     var result = zxcvbn(val);
     var text = document.getElementById('password-strength');
     if (val !== "") {
-        text.innerHTML = "Your password can be cracked by a modern desktop in <u>" + result.crack_times_display["offline_slow_hashing_1e4_per_second"] + "</u>";
+        text.innerHTML = "Your password can be cracked by a modern PC in <u>" + result.crack_times_display["offline_slow_hashing_1e4_per_second"] + "</u>";
     }
     else {
         text.innerHTML = "<br/>";

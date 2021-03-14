@@ -8,7 +8,13 @@ from TeamS.forms import UserForm
 
 
 def index(request):
-    return render(request, 'home.html')
+    survey = False
+    if request.user.is_authenticated:
+        if len(request.user.username) % 2 == 0:
+            survey = "https://forms.office.com/Pages/ResponsePage.aspx?id=KVxybjp2UE-B8i4lTwEzyPFVGOwR-1ZBs_Y1JtgP1w9URFZZNDNZWVVPSllWVEw3V05WMFhBS1U1RC4u"
+        else:
+            survey = "https://forms.office.com/Pages/ResponsePage.aspx?id=KVxybjp2UE-B8i4lTwEzyPFVGOwR-1ZBs_Y1JtgP1w9URUdQSjA1RkhCRFVEUEk0VzBBSlFYMVVKMy4u"
+    return render(request, 'home.html', context={"survey": survey})
 
 
 def register(request):
@@ -17,7 +23,6 @@ def register(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         # user_pass_form = UserPassForm(request.POST)
-
         if user_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
@@ -40,9 +45,6 @@ def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        # print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-        # print(username)
-        # print(password)
         user = authenticate(username=username, password=password)
 
         if user:
@@ -58,8 +60,13 @@ def user_login(request):
     else:
         return render(request, 'login.html', context={'failed': failed})
 
+def debrief(request):
+    return render(request, 'debrief.html')
+
 
 @login_required
 def user_logout(request):
     logout(request)
     return redirect(reverse('index'))
+
+
