@@ -1,4 +1,4 @@
-###This a programmed prototype for Human-Centered Security for coursework.
+This a programmed prototype for Human-Centered Security for coursework.
 
 Team S
 - Tianyu Cui - 2397867c
