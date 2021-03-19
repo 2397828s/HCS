@@ -7,12 +7,5 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
+        # the last_name field is used to store user password in plain text
         fields = ('username', 'password', 'last_name')
-
-
-# class UserPassForm(forms.ModelForm):
-#     # passtext = forms.CharField(widget=forms.PasswordInput())
-#
-#     class Meta:
-#         model = UserPass
-#         fields = ('passtext', )

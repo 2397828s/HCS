@@ -10,6 +10,8 @@ from TeamS.forms import UserForm
 def index(request):
     survey = False
     if request.user.is_authenticated:
+        # decides which survey link is displayed to a user based on username length
+        # survey version corresponds to type of message seen during registration
         if len(request.user.username) % 2 == 0:
             survey = "https://forms.office.com/Pages/ResponsePage.aspx?id=KVxybjp2UE-B8i4lTwEzyPFVGOwR-1ZBs_Y1JtgP1w9URFZZNDNZWVVPSllWVEw3V05WMFhBS1U1RC4u"
         else:
@@ -22,22 +24,15 @@ def register(request):
     error = False
     if request.method == 'POST':
         user_form = UserForm(request.POST)
-        # user_pass_form = UserPassForm(request.POST)
-
         if user_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            # user_pass = user_pass_form.save(commit=False)
-            # user_pass.user = user
-            # user_pass.save()
             registered = True
         else:
             error = list(user_form.errors.values())[0][0][:-1]
     else:
         user_form = UserForm()
-        # user_pass_form = UserPassForm()
-
     return render(request, 'register.html', context={'user_form': user_form, 'registered': registered, 'error': error})
 
 

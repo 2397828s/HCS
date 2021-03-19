@@ -9,7 +9,7 @@ var strength = {
 var password = document.getElementById('id_password');
 var passtext = document.getElementById('id_last_name');
 
-
+// Decides which password strength a user sees based on username length
 function update() {
     var username = document.getElementById('id_username');
     if ((username.value.length) % 2 === 0) {
@@ -20,6 +20,7 @@ function update() {
     }
 }
 
+// Updates relative strength message using zxcvbn algorithm
 function updateStrength() {
     var val = password.value;
     var result = zxcvbn(val);
@@ -32,6 +33,7 @@ function updateStrength() {
     }
 }
 
+// Updates cracking time message using zxcvbn algorithm
 function updateTime() {
     var val = password.value;
     var result = zxcvbn(val);
@@ -44,6 +46,7 @@ function updateTime() {
     }
 }
 
+// Disable the submit button until password requirements are met
 function validate() {
     document.getElementById('submit').disabled = true;
     var val = passtext.value;
